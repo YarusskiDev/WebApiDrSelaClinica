@@ -3,31 +3,31 @@ using System;
 using DataClinicaDrSela.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataClinicaDrSela.Migrations
 {
     [DbContext(typeof(MeuContexto))]
-    [Migration("20230223223613_first")]
+    [Migration("20230307191216_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .UseIdentityByDefaultColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 63)
+                .HasAnnotation("ProductVersion", "5.0.17");
 
             modelBuilder.Entity("AtendimentoProfissional", b =>
                 {
                     b.Property<int>("AtendimentosId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("ProfissionaisId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("AtendimentosId", "ProfissionaisId");
 
@@ -40,35 +40,35 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<DateTime>("DataAgendamento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp");
 
                     b.Property<DateTime>("DataInclusao")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp");
 
                     b.Property<DateTime>("DataUltimaAtualizacao")
-                        .HasColumnType("datetime");
+                        .HasColumnType("timestamp");
 
                     b.Property<int>("IdPaciente")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("IdTipoAtendimento")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("IdTipoStatus")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("PacienteId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("TipoAtendimentoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int?>("TipoStatusAtendimentoId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -85,8 +85,8 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Bairro")
                         .IsRequired()
@@ -105,7 +105,7 @@ namespace DataClinicaDrSela.Migrations
                         .HasColumnType("varchar(300)");
 
                     b.Property<int>("IdPessoa")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("Numero")
                         .HasColumnType("int");
@@ -130,11 +130,11 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<int>("IdPessoa")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -148,14 +148,14 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Cpf")
                         .HasColumnType("varchar(20)");
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<string>("Imagem")
                         .HasColumnType("varchar(200)");
@@ -184,14 +184,14 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Descricao")
                         .HasColumnType("varchar(500)");
 
                     b.Property<int>("IdPessoa")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -205,8 +205,8 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -221,8 +221,8 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -237,15 +237,15 @@ namespace DataClinicaDrSela.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
 
                     b.Property<int>("IdPessoa")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Nome")
                         .IsRequired()

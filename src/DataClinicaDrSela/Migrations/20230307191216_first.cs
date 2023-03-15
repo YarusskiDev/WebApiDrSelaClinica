@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataClinicaDrSela.Migrations
 {
@@ -11,15 +12,15 @@ namespace DataClinicaDrSela.Migrations
                 name: "Pessoas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: true),
                     Cpf = table.Column<string>(type: "varchar(20)", nullable: true),
                     Telefone = table.Column<string>(type: "varchar(20)", nullable: true),
                     NomeDaMae = table.Column<string>(type: "varchar(200)", nullable: true),
                     NomeDoPai = table.Column<string>(type: "varchar(200)", nullable: true),
                     Rg = table.Column<string>(type: "varchar(20)", nullable: true),
-                    DataNascimento = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "date", nullable: false),
                     Imagem = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
@@ -31,8 +32,8 @@ namespace DataClinicaDrSela.Migrations
                 name: "TipoAtendimentos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Descricao = table.Column<string>(type: "varchar(500)", nullable: false)
                 },
                 constraints: table =>
@@ -44,8 +45,8 @@ namespace DataClinicaDrSela.Migrations
                 name: "TipoStatusAtendimentos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Descricao = table.Column<string>(type: "varchar(20)", nullable: false)
                 },
                 constraints: table =>
@@ -57,8 +58,8 @@ namespace DataClinicaDrSela.Migrations
                 name: "Enderecos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Uf = table.Column<string>(type: "varchar(2)", nullable: false),
                     Cidade = table.Column<string>(type: "varchar(30)", nullable: false),
                     Bairro = table.Column<string>(type: "varchar(40)", nullable: false),
@@ -66,7 +67,7 @@ namespace DataClinicaDrSela.Migrations
                     Numero = table.Column<int>(type: "int", nullable: false),
                     Complemento = table.Column<string>(type: "varchar(300)", nullable: false),
                     Cep = table.Column<string>(type: "varchar(20)", nullable: false),
-                    IdPessoa = table.Column<int>(type: "int", nullable: false)
+                    IdPessoa = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,9 +84,9 @@ namespace DataClinicaDrSela.Migrations
                 name: "Pacientes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPessoa = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdPessoa = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,9 +103,9 @@ namespace DataClinicaDrSela.Migrations
                 name: "Profissionais",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPessoa = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdPessoa = table.Column<int>(type: "integer", nullable: false),
                     Descricao = table.Column<string>(type: "varchar(500)", nullable: true)
                 },
                 constraints: table =>
@@ -122,9 +123,9 @@ namespace DataClinicaDrSela.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPessoa = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdPessoa = table.Column<int>(type: "integer", nullable: false),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false),
                     Email = table.Column<string>(type: "varchar(200)", nullable: false),
                     Telefone = table.Column<string>(type: "varchar(40)", nullable: false),
@@ -145,17 +146,17 @@ namespace DataClinicaDrSela.Migrations
                 name: "Atendimentos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPaciente = table.Column<int>(type: "int", nullable: false),
-                    DataInclusao = table.Column<DateTime>(type: "datetime", nullable: false),
-                    DataUltimaAtualizacao = table.Column<DateTime>(type: "datetime", nullable: false),
-                    DataAgendamento = table.Column<DateTime>(type: "datetime", nullable: false),
-                    IdTipoStatus = table.Column<int>(type: "int", nullable: false),
-                    IdTipoAtendimento = table.Column<int>(type: "int", nullable: false),
-                    PacienteId = table.Column<int>(type: "int", nullable: true),
-                    TipoAtendimentoId = table.Column<int>(type: "int", nullable: true),
-                    TipoStatusAtendimentoId = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IdPaciente = table.Column<int>(type: "integer", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    DataUltimaAtualizacao = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    DataAgendamento = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    IdTipoStatus = table.Column<int>(type: "integer", nullable: false),
+                    IdTipoAtendimento = table.Column<int>(type: "integer", nullable: false),
+                    PacienteId = table.Column<int>(type: "integer", nullable: true),
+                    TipoAtendimentoId = table.Column<int>(type: "integer", nullable: true),
+                    TipoStatusAtendimentoId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -184,8 +185,8 @@ namespace DataClinicaDrSela.Migrations
                 name: "AtendimentoProfissional",
                 columns: table => new
                 {
-                    AtendimentosId = table.Column<int>(type: "int", nullable: false),
-                    ProfissionaisId = table.Column<int>(type: "int", nullable: false)
+                    AtendimentosId = table.Column<int>(type: "integer", nullable: false),
+                    ProfissionaisId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

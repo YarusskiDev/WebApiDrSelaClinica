@@ -18,7 +18,7 @@ namespace DataClinicaDrSela.Mapeamentos
             builder.Property(e => e.Cidade).IsRequired().HasColumnType("varchar(30)");
             builder.Property(e => e.Bairro).IsRequired().HasColumnType("varchar(40)");
             builder.Property(e => e.Rua).IsRequired().HasColumnType("varchar(100)");
-            builder.Property(e => e.Complemento).IsRequired().HasColumnType("varchar(300)");
+            builder.Property(e => e.Complemento).IsRequired(false).HasColumnType("varchar(300)");
             builder.Property(e => e.Cep).IsRequired().HasColumnType("varchar(20)");
             builder.Property(e => e.Numero).IsRequired().HasColumnType("int");
         }

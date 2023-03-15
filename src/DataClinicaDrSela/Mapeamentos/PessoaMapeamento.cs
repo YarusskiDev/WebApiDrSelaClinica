@@ -14,14 +14,14 @@ namespace DataClinicaDrSela.Mapeamentos
         public void Configure(EntityTypeBuilder<Pessoa> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.Nome).HasColumnType("varchar(200)");
-            builder.Property(p => p.Cpf).HasColumnType("varchar(20)");
-            builder.Property(p => p.Telefone).HasColumnType("varchar(20)");
-            builder.Property(p => p.NomeDaMae).HasColumnType("varchar(200)");
-            builder.Property(p => p.NomeDoPai).HasColumnType("varchar(200)");
-            builder.Property(p => p.Rg).HasColumnType("varchar(20)");
-            builder.Property(p => p.DataNascimento).HasColumnType("datetime");
-            builder.Property(p => p.Imagem).HasColumnType("varchar(200)");
+            builder.Property(p => p.Nome).HasColumnType("varchar(200)").IsRequired();
+            builder.Property(p => p.Cpf).HasColumnType("varchar(20)").IsRequired();
+            builder.Property(p => p.Telefone).HasColumnType("varchar(20)").IsRequired();
+            builder.Property(p => p.NomeDaMae).HasColumnType("varchar(200)").IsRequired();
+            builder.Property(p => p.NomeDoPai).HasColumnType("varchar(200)").IsRequired();
+            builder.Property(p => p.Rg).HasColumnType("varchar(20)").IsRequired();
+            builder.Property(p => p.DataNascimento).HasColumnType("date").IsRequired();
+            builder.Property(p => p.Imagem).HasColumnType("varchar(200)").IsRequired(false);
 
 
             builder.HasOne(p => p.Endereco).WithOne(e => e.Pessoa).HasForeignKey<Endereco>(e => e.IdPessoa);

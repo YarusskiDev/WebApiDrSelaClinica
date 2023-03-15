@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BusinessClinicaDrSela.Modelos;
+using Microsoft.AspNetCore.Http;
+using System;
 
-namespace BusinessClinicaDrSela.Modelos
+namespace ApiClinicaDrSela.ViewModel
 {
-    public class Pessoa:Entidade
+    public class PessoaViewModel
     {
         public string Nome { get; set; }
         public string Cpf { get; set; }
@@ -16,10 +14,10 @@ namespace BusinessClinicaDrSela.Modelos
         public string Rg { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Imagem { get; set; }
+        public IFormFile ImgUpload { get; set; }
         public virtual Endereco Endereco { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual Paciente Paciente { get; set; }
         public virtual Profissional Profissional { get; set; }
-
     }
 }

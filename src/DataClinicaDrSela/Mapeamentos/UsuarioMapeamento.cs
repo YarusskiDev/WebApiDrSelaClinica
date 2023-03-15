@@ -19,7 +19,7 @@ namespace DataClinicaDrSela.Mapeamentos
             builder.Property(u => u.Telefone).IsRequired().HasColumnType("varchar(40)");
             builder.Property(u => u.Senha).IsRequired().HasColumnType("varchar(50)");
 
-            builder.HasOne(u => u.Pessoa).WithOne(p => p.Usuario).HasForeignKey<Usuario>(f => f.IdPessoa); // perguntar pro gordo qual a garantia que estou criando na classe correta
+            builder.HasOne(u => u.Pessoa).WithOne(p => p.Usuario).HasForeignKey<Usuario>(f => f.IdPessoa);
         }
     }
 }
